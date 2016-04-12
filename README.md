@@ -45,15 +45,19 @@ name `BarakaLyricGoogle.h BarakaLyricGoogle.m`
 All new services are inherited by interface BarakaLyrics by making a unique `@interface` that is abstract to BarakaLyrics
 
 `//`
+
 `//  BarakaLyricGoogle.h`
 `//  Baraka Lyrics For Radiant Player`
 `//  Main Header For Google Lyrics`
 `//  @date April 12th, 2016`
 ` `
+
 `#import "BarakaLyrics.h"`
 ` `
+
 `@interface BarakaLyricGoogle : BarakaLyrics`
 ` `
+
 `@end`
 
 in our .m file we will make an implementation to BarakaLyricGoogle which will add-on to BarakaLyrics by findBarakaLyrics and whatClass
@@ -62,6 +66,7 @@ in our .m file we will make an implementation to BarakaLyricGoogle which will ad
 `className = [obtain whatClass]; [self BarakaInjectLyrics:className content:Final];` takes over.
 
 `//`
+
 `//  BarakaLyricGoogle.m`
 `//  Baraka Lyrics For Radiant Player`
 `//  Main Controller For Google Lyrics`
@@ -69,18 +74,23 @@ in our .m file we will make an implementation to BarakaLyricGoogle which will ad
 
 `#import "BarakaLyricGoogle.h"`
 ` `
+
 `@implementation BarakaLyricGoogle`
 ` `
+
 `// Lets Get Our Current Class`
 `- (NSString *)__whatClass {`
 `    [BarakaLyricGoogle temp];`
 `    return @"";`
 `}`
 ` `
+
 `+ (NSString *)temp {`
 `    return @"";`
 `}`
+
 ` `
+
 `- (NSString *)__findBarakaLyrics:(NSString *)artist album:(NSString *)album title:(NSString *)title {}`
 
 
