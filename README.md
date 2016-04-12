@@ -95,8 +95,11 @@ in our .m file we will make an implementation to BarakaLyricGoogle which will ad
 
 
 Thanks to:
+
  Geoffrey Grosenbach for the Hpple which can be found here https://github.com/topfunky/hpple
+ 
  Matt Gallagher for XPathQuery
+ 
  And the Radiant Player team for making a great app.
 
  I had a lot of fun making this.
