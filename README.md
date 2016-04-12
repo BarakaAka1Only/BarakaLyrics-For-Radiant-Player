@@ -47,49 +47,53 @@ All new services are inherited by interface BarakaLyrics by making a unique `@in
 `//`
 
 `//  BarakaLyricGoogle.h`
+
 `//  Baraka Lyrics For Radiant Player`
+
 `//  Main Header For Google Lyrics`
+
 `//  @date April 12th, 2016`
-` `
+
 
 `#import "BarakaLyrics.h"`
-` `
+
 
 `@interface BarakaLyricGoogle : BarakaLyrics`
-` `
+
 
 `@end`
 
 in our .m file we will make an implementation to BarakaLyricGoogle which will add-on to BarakaLyrics by findBarakaLyrics and whatClass
 
 `whatClass` is important to get what classes are in use for our var NSString object which
+
 `className = [obtain whatClass]; [self BarakaInjectLyrics:className content:Final];` takes over.
 
 `//`
 
 `//  BarakaLyricGoogle.m`
+
 `//  Baraka Lyrics For Radiant Player`
+
 `//  Main Controller For Google Lyrics`
+
 `//  @date April 12th, 2016`
 
 `#import "BarakaLyricGoogle.h"`
-` `
+
 
 `@implementation BarakaLyricGoogle`
-` `
+
 
 `// Lets Get Our Current Class`
 `- (NSString *)__whatClass {`
 `    [BarakaLyricGoogle temp];`
 `    return @"";`
 `}`
-` `
 
 `+ (NSString *)temp {`
 `    return @"";`
 `}`
-
-` `
 
 `- (NSString *)__findBarakaLyrics:(NSString *)artist album:(NSString *)album title:(NSString *)title {}`
 
