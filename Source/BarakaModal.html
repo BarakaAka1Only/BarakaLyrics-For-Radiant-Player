@@ -1,0 +1,519 @@
+<style id="BarakaModal">
+/**
+ * Material BarakaModal CSS
+ */
+.BarakaModal {
+    will-change: visibility, opacity;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 2;
+    top: 7.7%;
+    left: 0px;
+    right: 0px;
+    visibility: hidden;
+    opacity: 0;
+    /*-webkit-transition: all .5s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all .5s cubic-bezier(0.23, 1, 0.32, 1);*/
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s
+}
+.BarakaModal-active {
+    visibility: visible;
+    opacity: 1
+}
+.BarakaModal-align-top {
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    align-items: flex-start
+}
+.BarakaModal_bg {
+    background: transparent
+}
+.BarakaModal_dialog {
+    max-width: 800px;
+    /*padding: 1.2rem;*/
+    position: relative;
+    z-index: 9;
+    top: 7.7%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    /*height: 0px;*/
+    margin: 0 auto;
+}
+.BarakaModal_dialog:before,
+.BarakaModal_dialog:after {
+    content: "";
+    width: 99.1%;
+    height: 24px;
+    position: absolute;
+    left: 1px;
+    z-index: 100;
+}
+.BarakaModal_dialog:before {
+    background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%);
+    background-image: linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%);
+    top: 1px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+.BarakaModal_dialog:after {
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%);
+    background-image: linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%);
+    bottom: 1px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.BarakaModal_content {
+    will-change: transform, opacity;
+    position: relative;
+    padding: 2.4rem;
+    background: rgba(255, 255, 255, 0.9);
+    background-clip: padding-box;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    -webkit-transition: all .25s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all .25s cubic-bezier(0.23, 1, 0.32, 1);
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    font-weight: 700!important;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif!important;
+    white-space: pre-line;
+}
+.BarakaModal_content-active {
+    opacity: 1;
+    max-height: 400px;
+    overflow: auto
+}
+.BarakaModal_close {
+    z-index: 1100;
+    cursor: pointer
+}
+.BarakaModal_trigger {
+    -webkit-transition: all .5s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all .5s cubic-bezier(0.23, 1, 0.32, 1)
+}
+.BarakaModal_trigger-active {
+    z-index: 10
+}
+.BarakaModal_trigger:hover {
+    background: #ddd
+}
+#BarakaModal_temp {
+    will-change: transform, opacity;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1;
+    -webkit-transition: opacity .1s ease-out, -webkit-transform .5s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: opacity .1s ease-out, transform .5s cubic-bezier(0.23, 1, 0.32, 1)
+}
+.bd-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1.8rem;
+    padding: .2rem;
+    height: 23px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    -webkit-transition: all .5s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all .5s cubic-bezier(0.23, 1, 0.32, 1)
+}
+.bd-close svg {
+    width: 24px;
+    fill: #fff;
+    pointer-events: none;
+    vertical-align: top
+}
+.bd-close:hover {
+    background: rgba(0, 0, 0, 0.9)
+}
+.BarakaMaterial-box {
+    overflow: scroll;
+    width: 300px;
+    max-height: 136px;
+    position: absolute;
+    z-index: 99;
+    transform: translateY(15px);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1)
+}
+.BarakaModal::-webkit-scrollbar, .BarakaModal_content::-webkit-scrollbar, .BarakaMaterial-box::-webkit-scrollbar {
+    display: none
+}
+.BarakaMaterial-box .BarakaMaterial-box__inner {
+    position: relative;
+    border-radius: 3px;
+    color: #fff;
+    overflow: hidden
+}
+.BarakaMaterial-box .BarakaMaterial-box__content {
+    background: rgba(255, 255, 255, 0.9);
+    width: 300px;
+    height: auto;
+    position: relative;
+    z-index: 3;
+    opacity: 0;
+    -webkit-transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 700!important;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif!important
+}
+.BarakaMaterial-box .BarakaMaterial-box__circle {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    left: 46%;
+    bottom: -35%;
+    border-radius: 50%;
+    z-index: 2;
+    -webkit-transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1)
+}
+.BarakaMaterial-box .BarakaMaterial-box__header {
+    margin: 0 -16px -16px;
+    padding: 10px 15px;
+    line-height: initial;
+    text-align: center;
+    border-bottom: 1px solid #cacaca;
+    color: black
+}
+.BarakaMaterial-box--show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    border-radius: 4px;
+    border: 1px solid #cacaca;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25)
+}
+.BarakaMaterial-box--show .BarakaMaterial-box__content {
+    opacity: 1
+}
+.BarakaMaterial-box--show .BarakaMaterial-box__circle {
+    width: 150%;
+    height: 410%;
+    background: #d8d8d8;
+    border: 1px solid #cacaca;
+    left: -20%;
+    bottom: -140%;
+    -webkit-transition: all 450ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 450ms cubic-bezier(0.4, 0, 0.2, 1)
+}
+.BarakaMaterial-box__content ul, .BarakaMaterial-box__content li {
+    list-style: none;
+    margin-bottom: 0;
+    -webkit-padding-start: 0
+}
+.BarakaMaterial-box__content li {
+    padding: 0;
+    -webkit-padding-start: 0;
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    position: relative;
+    -webkit-transition: all .5s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all .5s cubic-bezier(0.23, 1, 0.32, 1)
+}
+.BarakaMaterial-box__content li:hover {
+    cursor: pointer;
+    background-color: #cacaca
+}
+.BarakaMaterial-box__content li:before, .BarakaMaterial-box__content li:after {
+    content: "";
+    width: 100%;
+    height: 0;
+    left: 0;
+    border-top: 1px solid;
+    position: absolute
+}
+.BarakaMaterial-box__content li:first-child:after, .BarakaMaterial-box__content li:last-child:before {
+    display: none
+}
+.BarakaMaterial-box__content li:before {
+    border-color: #cacaca;
+    bottom: 0
+}
+.BarakaMaterial-box__content li:after {
+    border-color: #fff
+}
+.BarakaMaterial-fade {
+    position: relative
+}
+.BarakaMaterial-fade:before {
+    background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0) 0, #fff 100%);
+    background-image: linear-gradient(bottom, rgba(255, 255, 255, 0) 0, #fff 100%);
+    left: 0
+}
+.BarakaMaterial-fade:before {
+    content: "";
+    width: 100%;
+    height: 34px;
+    position: absolute;
+    top: 39px;
+    z-index: 100
+}
+.BarakaMaterial-box__content li.BarakaModal_trigger {
+    transform: initial!important;
+    -webkit-transform: initial!important
+}
+.bd-nothing {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    width: 0
+}
+#avail-lyr {
+    -webkit-margin-before: 1.2em;
+}
+#avail-lyr>li span {
+    text-indent: -9999px;
+    display: inline-block;
+    float: left
+}
+.BarakaMaterial-box__content li svg {
+    width: 100px;
+    height: 40px
+}
+.BarakaMaterial-box__content li#azlyrics svg {
+    margin-left: -28px;
+    width: 130px
+}
+.BarakaMaterial-box__content li#genius svg {
+    margin-left: 12px;
+    width: 130px
+}
+.BarakaMaterial-box__content li#metrolyrics svg {
+    margin-left: -26px;
+    width: 162px
+}
+.BarakaMaterial-box__content li#lyricwiki svg {
+    margin-left: -20px
+}
+.BarakaMaterial-box__content li#musixmatch svg {
+    margin-left: -33px;
+    width: 160px
+}
+.Yosemite {}
+.Light {}
+.Black {} /*#222326*/
+.Rdiant {} /*#018fd5*/
+.DarkCyan {}/*#039cac*/
+.Google {}  /*#ef6c00*/
+
+/* Google */
+.Google .BarakaModal_content {
+    background: rgba(239, 108, 0, 0.9);
+    border: 1px solid #d96300
+}
+.Google .bd-close:hover {
+    background: rgba(0, 0, 0, 0.9)
+}
+.Google .BarakaMaterial-box .BarakaMaterial-box__inner {
+    color: #fff
+}
+.Google .BarakaMaterial-box .BarakaMaterial-box__content {
+    background: rgba(239, 108, 0, 0.9)
+}
+.Google .BarakaMaterial-box .BarakaMaterial-box__circle {
+    background: rgba(239, 108, 0, 0.9)
+}
+.Google .BarakaMaterial-box .BarakaMaterial-box__header {
+    border-bottom: 1px solid #c15700;
+    color: black
+}
+.Google .BarakaMaterial-box .BarakaMaterial-box__header {
+    color: black
+}
+.Google .BarakaMaterial-box--show {
+    border: 1px solid #d96300
+}
+.Google .BarakaMaterial-box--show .BarakaMaterial-box__circle {
+    background: #ef6c00;
+    border: 1px solid #c15700
+}
+.Google .BarakaMaterial-box__content li:hover {
+    background-color: #c15700
+}
+.Google .BarakaMaterial-box__content li:before {
+    border-color: #c15700
+}
+.Google .BarakaMaterial-box__content li:after {
+    border-color: #ff7300
+}
+.Google .BarakaMaterial-fade:before {
+    background-image: -webkit-linear-gradient(bottom, rgba(239, 108, 0, 0) 0, #ef6c00 100%);
+    background-image: linear-gradient(bottom, rgba(239, 108, 0, 0) 0, #ef6c00 100%)
+}
+.Google .BarakaModal_dialog:before {
+    background-image: -webkit-linear-gradient(bottom, rgba(239, 108, 0, 0) 0%, rgb(239, 108, 0) 100%);
+    background-image: linear-gradient(bottom, rgba(239, 108, 0, 0) 0%, rgb(239, 108, 0) 100%);
+}
+.Google .BarakaModal_dialog:after {
+    background-image: -webkit-linear-gradient(top, rgba(239, 108, 0, 0) 0%, rgb(239, 108, 0) 100%);
+    background-image: linear-gradient(top, rgba(239, 108, 0, 0) 0%, rgb(239, 108, 0) 100%);
+}
+.Google .BarakaMaterial-box__content li#azlyrics svg path {//fill:# }
+.Google .BarakaMaterial-box__content li#genius svg path.genius { fill: rgba(255, 255, 255, 0.1) }
+.Google .BarakaMaterial-box__content li#metrolyrics path,
+.Google .BarakaMaterial-box__content li#metrolyrics polygon,
+.Google .BarakaMaterial-box__content li#metrolyrics rect {
+  fill: #000
+}
+.Google .BarakaMaterial-box__content li#lyricwiki path { fill: #000 }
+.Google .BarakaMaterial-box__content li#musixmatch path { //fill:# }
+
+/* DarkCyan */
+.DarkCyan .BarakaModal_content {
+    background: rgba(3, 156, 172, 0.9);
+    border: 1px solid #007a87;
+    color: #fff
+}
+.DarkCyan .bd-close:hover { background: rgba(0, 0, 0, 0.9) }
+.DarkCyan .BarakaMaterial-box .BarakaMaterial-box__inner { color: #fff }
+.DarkCyan .BarakaMaterial-box .BarakaMaterial-box__content { background: rgba(3, 156, 172, 0.9) }
+.DarkCyan .BarakaMaterial-box .BarakaMaterial-box__circle { background: rgba(3, 156, 172, 0.9) }
+.DarkCyan .BarakaMaterial-box .BarakaMaterial-box__header {
+    border-bottom: 1px solid #007a87;
+    color: black
+}
+.DarkCyan .BarakaMaterial-box .BarakaMaterial-box__header { color: white }
+.DarkCyan .BarakaMaterial-box--show { border: 1px solid #007a87 }
+.DarkCyan .BarakaMaterial-box--show .BarakaMaterial-box__circle {
+    background: #039cac;
+    border: 1px solid #007a87
+}
+.DarkCyan .BarakaMaterial-box__content li:hover { background-color: #007a87 }
+.DarkCyan .BarakaMaterial-box__content li:before { border-color: #007a87 }
+.DarkCyan .BarakaMaterial-box__content li:after { border-color: #0cacbd }
+.DarkCyan .BarakaMaterial-fade:before {
+    background-image: -webkit-linear-gradient(bottom, rgba(3, 156, 172, 0) 0, #039cac 100%);
+    background-image: linear-gradient(bottom, rgba(3, 156, 172, 0) 0, #039cac 100%)
+}
+.DarkCyan .BarakaModal_dialog:before {
+    background-image: -webkit-linear-gradient(bottom, rgba(3, 156, 172, 0) 0%, rgb(3, 156, 172) 100%);
+    background-image: linear-gradient(bottom, rgba(3, 156, 172, 0) 0%, rgb(3, 156, 172) 100%);
+}
+.DarkCyan .BarakaModal_dialog:after {
+    background-image: -webkit-linear-gradient(top, rgba(3, 156, 172, 0) 0%, rgb(3, 156, 172) 100%);
+    background-image: linear-gradient(top, rgba(3, 156, 172, 0) 0%, rgb(3, 156, 172) 100%);
+}
+.DarkCyan .BarakaMaterial-box__content li#azlyrics svg path { fill: #fff }
+.DarkCyan .BarakaMaterial-box__content li#genius svg path.genius { fill: rgba(255, 255, 255, 0.1) }
+.DarkCyan .BarakaMaterial-box__content li#genius svg path.genius-2 { fill: #fff }
+.DarkCyan .BarakaMaterial-box__content li#metrolyrics path,
+.DarkCyan .BarakaMaterial-box__content li#metrolyrics polygon,
+.DarkCyan .BarakaMaterial-box__content li#metrolyrics rect { fill: #fff }
+.DarkCyan .BarakaMaterial-box__content li#lyricwiki path { fill: #fff }
+.DarkCyan .BarakaMaterial-box__content li#musixmatch g[fill="#1d1b19"] path { fill: #fff }
+
+/* Black */
+.Black .BarakaModal_content {
+    background: rgba(34, 35, 38, 0.9);
+    border: 1px solid #000;
+    color: #fff
+}
+.Black .bd-close:hover { background: rgba(0, 0, 0, 0.9) }
+.Black .BarakaMaterial-box .BarakaMaterial-box__inner { color: #fff }
+.Black .BarakaMaterial-box .BarakaMaterial-box__content { background: rgba(34, 35, 38, 0.9) }
+.Black .BarakaMaterial-box .BarakaMaterial-box__circle { background: rgba(34, 35, 38, 0.9) }
+.Black .BarakaMaterial-box .BarakaMaterial-box__header {
+    border-bottom: 1px solid #000;
+    color: white
+}
+.Black .BarakaMaterial-box .BarakaMaterial-box__header { color: white }
+.Black .BarakaMaterial-box--show { border: 1px solid #000 }
+.Black .BarakaMaterial-box--show .BarakaMaterial-box__circle {
+    background: #222326;
+    border: 1px solid #000
+}
+.Black .BarakaMaterial-box__content li:hover { background-color: #000 }
+.Black .BarakaMaterial-box__content li:before { border-color: #000 }
+.Black .BarakaMaterial-box__content li:after { border-color: #3a3a3a }
+.Black .BarakaMaterial-fade:before {
+    background-image: -webkit-linear-gradient(bottom, rgba(34, 35, 38, 0) 0, #222326 100%);
+    background-image: linear-gradient(bottom, rgba(34, 35, 38, 0) 0, #222326 100%)
+}
+.Black .BarakaModal_dialog:before {
+    background-image: -webkit-linear-gradient(bottom, rgba(34, 35, 38, 0) 0%, rgb(34, 35, 38) 100%);
+    background-image: linear-gradient(bottom, rgba(34, 35, 38, 0) 0%, rgb(34, 35, 38) 100%);
+}
+.Black .BarakaModal_dialog:after {
+    background-image: -webkit-linear-gradient(top, rgba(34, 35, 38, 0) 0%, rgb(34, 35, 38) 100%);
+    background-image: linear-gradient(top, rgba(34, 35, 38, 0) 0%, rgb(34, 35, 38) 100%);
+}
+.Black .BarakaMaterial-box__content li#azlyrics svg path { fill: #fff }
+.Black .BarakaMaterial-box__content li#genius svg path.genius { //fill:rgba(255,255,255,0.1); }
+.Black .BarakaMaterial-box__content li#genius svg path.genius-2 { //fill:#fff }
+.Black .BarakaMaterial-box__content li#metrolyrics path,
+.Black .BarakaMaterial-box__content li#metrolyrics polygon,
+.Black .BarakaMaterial-box__content li#metrolyrics rect { fill: #fff }
+.Black .BarakaMaterial-box__content li#lyricwiki path { fill: #fff }
+.Black .BarakaMaterial-box__content li#musixmatch g[fill="#1d1b19"] path { fill: #fff }
+
+/* Rdiant */
+.Rdiant .BarakaModal_content {
+    background: rgba(1, 143, 213, 0.9);
+    border: 1px solid #00547d;
+    color: #fff
+}
+.Rdiant .bd-close:hover { background: rgba(0, 0, 0, 0.9) }
+.Rdiant .BarakaMaterial-box .BarakaMaterial-box__inner { color: #fff }
+.Rdiant .BarakaMaterial-box .BarakaMaterial-box__content { background: rgba(1, 143, 213, 0.9) }
+.Rdiant .BarakaMaterial-box .BarakaMaterial-box__circle { background: rgba(1, 143, 213, 0.9) }
+.Rdiant .BarakaMaterial-box .BarakaMaterial-box__header {
+    border-bottom: 1px solid #00547d;
+    color: white
+}
+.Rdiant .BarakaMaterial-box .BarakaMaterial-box__header {	color: white }
+.Rdiant .BarakaMaterial-box--show { border: 1px solid #00547d }
+.Rdiant .BarakaMaterial-box--show .BarakaMaterial-box__circle {
+    background: #018fd5;
+    border: 1px solid #00547d
+}
+.Rdiant .BarakaMaterial-box__content li:hover { background-color: #0f6189 }
+.Rdiant .BarakaMaterial-box__content li:before { border-color: #00547d }
+.Rdiant .BarakaMaterial-box__content li:after { border-color: #2ea2da }
+.Rdiant .BarakaMaterial-fade:before {
+    background-image: -webkit-linear-gradient(bottom, rgba(1, 143, 213, 0) 0, #018fd5 100%);
+    background-image: linear-gradient(bottom, rgba(1, 143, 213, 0) 0, #018fd5 100%)
+}
+.Rdiant .BarakaModal_dialog:before {
+    background-image: -webkit-linear-gradient(bottom, rgba(1, 143, 213, 0) 0%, rgb(1, 143, 213) 100%);
+    background-image: linear-gradient(bottom, rgba(1, 143, 213, 0) 0%, rgb(1, 143, 213) 100%);
+}
+.Rdiant .BarakaModal_dialog:after {
+    background-image: -webkit-linear-gradient(top, rgba(1, 143, 213, 0) 0%, rgb(1, 143, 213) 100%);
+    background-image: linear-gradient(top, rgba(1, 143, 213, 0) 0%, rgb(1, 143, 213) 100%);
+}
+.Rdiant .BarakaMaterial-box__content li#azlyrics svg path { fill: #fff }
+.Rdiant .BarakaMaterial-box__content li#genius svg path.genius { fill: rgba(255, 255, 255, 0.1) }
+.Rdiant .BarakaMaterial-box__content li#genius svg path.genius-2 { //fill:#fff }
+.Rdiant .BarakaMaterial-box__content li#metrolyrics path,
+.Rdiant .BarakaMaterial-box__content li#metrolyrics polygon,
+.Rdiant .BarakaMaterial-box__content li#metrolyrics rect { fill: #fff }
+.Rdiant .BarakaMaterial-box__content li#lyricwiki path { fill: #fff }
+.Rdiant .BarakaMaterial-box__content li#musixmatch g[fill="#1d1b19"] path { fill: #fff }
+
+/* hide from providers*/
+.BarakaHide { opacity: 0!important; }
+.lyricsbreak,#mid-song-discussion,.desc.compress,.lyricsh,.ringtone,.noprint,.div-share,.fb-like,.div-share,#addsong,#corlyr,.smt,.hidden,.album-panel,.songlist-panel,[action="http://search.azlyrics.com/search.php"] {display: none;}
+</style>
